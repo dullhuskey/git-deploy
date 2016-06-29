@@ -26,7 +26,9 @@ _____
 	* [python web 脚本](dogit.py). 
 	* 运行 ``python dogit.py``
 	* 此时浏览器访问 IP:5000 即可成功使用python 做 同步操作.
-3.  supervisor 管控flask 执行.
+3.  gunicorn 管控flask 执行.
+	* 安装gunicorn
+	* 运行
 	```
 	gunicorn -w4 -b0.0.0.0:5000 dogit:app &
 	# -b 设置 ip 以及端口
@@ -34,6 +36,7 @@ _____
 	# dogit 为需要后台执行的 py文件名
 	# :app Flask 声明的变量名称 app = Flask(__name__)
 	```
+	* 停止 *kill -9 `ps aux |grep gunicorn |grep your_app_name | awk '{ print $2 }'`*
 	
 4. html iframe 控制两个服务器 [deploy.html](deploy.html)
 	 
