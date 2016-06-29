@@ -4,3 +4,11 @@
 * Git
 * Python Flask 环境
 * supervisor
+
+
+
+### 操作示意图1
+![image](code-deploy.png)
+
+### 操作示意图2
+![image](code-deploy2.png)
