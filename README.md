@@ -34,5 +34,21 @@ _____
 	# dogit 为需要后台执行的 py文件名
 	# :app Flask 声明的变量名称 app = Flask(__name__)
 	```
+	
+4. html iframe 控制两个服务器 [deploy.html](deploy.html)
 	 
+####可能遇到的问题
+
+1. Python 通过 ``commands.getstatusoutput`` 方法获取执行``pull origin develop``后的返回信息.输入到html上. ``o.system``只能执行不能看到返回的信息
+2. ``app:run(host="0.0.0.0",port="5000")`` 此处默认host 为127.0.0.1 port 为5000 . 若只是简单的通过flask辅助操作linux 命令，不建议配置nginx. 直接使用就好, 所以host 为远程IP 最好设置成 ``0.0.0.0``
+3. ``python dogit.py &``后台运行后退出控制台就会中断. 
+	 通过 ``nohup python dogit.py &`` 执行可达到效果,但是由于是单进程,容易出现卡死不响应情况.
+	 所以通过supervisor 实现多线程可以保证 flask 更稳定的运行.
+4. 网上说的Python bug 也会导致访问卡死和不响应, 我根据做了调整,好像还是会出现同样的问题.最后通过配置supervisor才解决.
+	Python Lib 下``SocketServer.py``第715行的pass改为
+```
+	 self.wfile._wbuf = []
+	 self.wfile._wbuf_len = 0
 	 
+```
+原链接：https://bugs.python.org/file40772/clear_buffer_on_error.patch
