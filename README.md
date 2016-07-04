@@ -36,7 +36,10 @@ _____
 	# dogit 为需要后台执行的 py文件名
 	# :app Flask 声明的变量名称 app = Flask(__name__)
 	```
-	* 停止 *kill -9 `ps aux |grep gunicorn |grep your_app_name | awk '{ print $2 }'`*
+	* 停止 
+	```
+		kill -9 `ps aux |grep gunicorn |grep dogit | awk '{ print $2 }'`
+	```
 	
 4. html iframe 控制两个服务器 [deploy.html](deploy.html)
 	 
