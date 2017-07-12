@@ -13,7 +13,7 @@
 
 
 
-###使用方法
+### 使用方法
 
 1. 部署一个远程git仓库, 确保各个服务器均能访问.并且与各个服务器配置好 
 	* 迁移本地git仓库至远程服务器,可直接将本地服务器仓库的 projectxxx.git 打包传输到远程服务器再解压.所有日志和改动都会被保留下来. 
@@ -41,7 +41,7 @@
 	
 4. html iframe 控制两个服务器 [deploy.html](deploy.html)
 	 
-###可能遇到的问题
+### 可能遇到的问题
 
 1. Python 通过 ``commands.getstatusoutput`` 方法获取执行``pull origin develop``后的返回信息.输入到html上. ``o.system``只能执行不能看到返回的信息
 2. ``app:run(host="0.0.0.0",port="5000")`` 此处默认host 为127.0.0.1 port 为5000 . 若只是简单的通过flask辅助操作linux 命令，不建议配置nginx. 直接使用就好, 所以host 为远程IP 最好设置成 ``0.0.0.0``
