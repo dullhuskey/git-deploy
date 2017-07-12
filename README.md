@@ -13,8 +13,6 @@
 
 
 
-_____
-
 ###使用方法
 
 1. 部署一个远程git仓库, 确保各个服务器均能访问.并且与各个服务器配置好 
@@ -27,7 +25,7 @@ _____
 	* 运行 ``python dogit.py``
 	* 此时浏览器访问 IP:5000 即可成功使用python 做 同步操作.
 3.  gunicorn 管控flask 执行.
-	* 安装gunicorn
+	* 安装gunicorn `pip install gunicorn`
 	* 运行
 	```
 	gunicorn -w4 -b0.0.0.0:5000 dogit:app &
@@ -43,7 +41,7 @@ _____
 	
 4. html iframe 控制两个服务器 [deploy.html](deploy.html)
 	 
-####可能遇到的问题
+###可能遇到的问题
 
 1. Python 通过 ``commands.getstatusoutput`` 方法获取执行``pull origin develop``后的返回信息.输入到html上. ``o.system``只能执行不能看到返回的信息
 2. ``app:run(host="0.0.0.0",port="5000")`` 此处默认host 为127.0.0.1 port 为5000 . 若只是简单的通过flask辅助操作linux 命令，不建议配置nginx. 直接使用就好, 所以host 为远程IP 最好设置成 ``0.0.0.0``
@@ -57,4 +55,4 @@ _____
 	 self.wfile._wbuf_len = 0
 	 
 ```
-原链接：https://bugs.python.org/file40772/clear_buffer_on_error.patch
+
